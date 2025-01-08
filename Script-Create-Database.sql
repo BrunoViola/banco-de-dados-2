@@ -17,3 +17,21 @@ FOR EACH ROW
 BEGIN
 SELECT Secao_seq.nextval INTO :new.id FROM dual;
 END;
+
+CREATE TABLE Genero ( 
+ 	ID NUMBER,
+ 	Nome VARCHAR(100) NOT NULL,
+ 	ID_Secao INT NOT NULL,
+	 
+ 	CONSTRAINT pk_Genero PRIMARY KEY(ID),
+	CONSTRAINT uk_Genero UNIQUE(Nome, ID_Secao),
+ 	CONSTRAINT fk_Secao FOREIGN KEY(ID_Secao) 
+ 		REFERENCES Secao(ID) ON DELETE CASCADE
+);
+
+CREATE OR REPLACE TRIGGER gera_genero_id
+BEFORE INSERT ON Genero
+FOR EACH ROW
+BEGIN
+SELECT Genero_seq .nextval INTO :new.id FROM dual;
+END;
