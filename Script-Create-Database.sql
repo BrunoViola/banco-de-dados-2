@@ -53,3 +53,19 @@ FOR EACH ROW
 BEGIN
 SELECT Editora_seq.nextval INTO :new.id FROM dual;
 END;
+
+-- Create Livro
+CREATE TABLE Livro ( 
+ 	ISBN NUMBER(13,0) NOT NULL,
+ 	Titulo VARCHAR(200),  
+ 	Ano INT,  
+ 	Preco NUMBER(10,2) NOT NULL,  
+ 	Estoque INT NOT NULL,  
+ 	Descricao VARCHAR(3000),  
+ 	ID_Editora INT NOT NULL,
+ 
+	CONSTRAINT pk_Livro PRIMARY KEY (ISBN),
+ 	CONSTRAINT fk_Editora FOREIGN KEY (ID_Editora) 
+		REFERENCES Editora(ID) ON DELETE CASCADE,
+	CHECK(Preco >= 0)
+);
