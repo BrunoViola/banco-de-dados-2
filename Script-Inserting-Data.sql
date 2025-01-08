@@ -51,3 +51,26 @@ INSERT ALL
     SELECT * FROM DUAL;
 
 SELECT * FROM Genero;
+
+-- Inserindo as Editoras
+INSERT ALL
+    INTO Editora(Nome) VALUES('Editora Vozes') --1
+	INTO Editora(Nome) VALUES('Vestígio') --2
+	INTO Editora(Nome) VALUES('Intrínseca') --3
+	INTO Editora(Nome) VALUES('Darkside') --4
+	INTO Editora(Nome) VALUES('Appris Editora') --5
+	INTO Editora(Nome) VALUES('Alta Books') --6
+	INTO Editora(Nome) VALUES('Olhares') --7
+	INTO Editora(Nome) VALUES('Editora Sextante') --78
+	INTO Editora(Nome) VALUES('Zahar') --9
+	INTO Editora(Nome) VALUES('Galenus') --10
+	INTO Editora(Nome) VALUES('Principis') --11
+	INTO Editora(Nome) VALUES('Galera') --12
+	INTO Editora(Nome) VALUES('Thomas Nelson Brasil') --13
+	INTO Editora(Nome) VALUES('Panini') --14
+	INTO Editora(Nome) VALUES('Texugo') --15
+	INTO Editora(Nome) VALUES('Melhoramentos') --16
+	INTO Editora(Nome) VALUES('Editora Garnier') --17
+	INTO Editora(Nome) VALUES('Faro Editorial') --18
+    SELECT * FROM DUAL;
+SELECT * FROM Editora;

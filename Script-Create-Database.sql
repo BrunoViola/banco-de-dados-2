@@ -3,6 +3,7 @@ CREATE SEQUENCE Genero_seq START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
 CREATE SEQUENCE Editora_seq START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
 CREATE SEQUENCE Autor_seq START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
 
+-- Create Secao
 CREATE TABLE Secao ( 
  	ID NUMBER,
  	Nome VARCHAR(50) NOT NULL,  
@@ -18,6 +19,7 @@ BEGIN
 SELECT Secao_seq.nextval INTO :new.id FROM dual;
 END;
 
+-- Create Genero
 CREATE TABLE Genero ( 
  	ID NUMBER,
  	Nome VARCHAR(100) NOT NULL,
@@ -34,4 +36,20 @@ BEFORE INSERT ON Genero
 FOR EACH ROW
 BEGIN
 SELECT Genero_seq .nextval INTO :new.id FROM dual;
+END;
+
+-- Create Editora
+CREATE TABLE Editora ( 
+	ID NUMBER,
+ 	Nome VARCHAR(50) NOT NULL, 
+	
+ 	CONSTRAINT pk_Editora PRIMARY KEY(ID),
+	CONSTRAINT uk_Editora UNIQUE(Nome)
+); 
+
+CREATE OR REPLACE TRIGGER gera_editora_id
+BEFORE INSERT ON Editora
+FOR EACH ROW
+BEGIN
+SELECT Editora_seq.nextval INTO :new.id FROM dual;
 END;
