@@ -69,3 +69,36 @@ CREATE TABLE Livro (
 		REFERENCES Editora(ID) ON DELETE CASCADE,
 	CHECK(Preco >= 0)
 );
+
+-- Create Cliente
+CREATE TABLE Cliente ( 
+	CPF CHAR(11) NOT NULL,
+ 	Sexo CHAR(1),  
+ 	Data_nascimento DATE,  
+ 	Email VARCHAR(50) NOT NULL,    
+	Pnome VARCHAR(30) NOT NULL,
+ 	Snome VARCHAR(50) NOT NULL,    
+ 	Cidade VARCHAR(30) NOT NULL,  
+ 	Estado CHAR(2) NOT NULL,  
+
+ 	CONSTRAINT pk_Cliente PRIMARY KEY (CPF),
+	CONSTRAINT uk_Cliente UNIQUE(Email)
+); 
+
+-- Create Autor
+CREATE TABLE Autor ( 
+ 	ID NUMBER,  
+ 	Pnome VARCHAR(30),
+ 	Snome VARCHAR(50), 
+	Nacionalidade VARCHAR (20),
+
+ 	CONSTRAINT pk_Autor PRIMARY KEY(ID),
+	CHECK(Pnome IS NOT NULL OR Snome IS NOT NULL)
+);
+
+CREATE OR REPLACE TRIGGER gera_autor_id
+BEFORE INSERT ON Autor
+FOR EACH ROW
+BEGIN
+SELECT Autor_seq.nextval INTO :new.id FROM dual;
+END;

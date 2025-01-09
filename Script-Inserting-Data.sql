@@ -106,3 +106,34 @@ INSERT ALL
 SELECT * FROM DUAL;
 
 SELECT * FROM Livro;
+
+-- Inserindo Autores
+INSERT ALL
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Byung-Chul', 'Han', 'Coreano') --1
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Michel', 'Desmurget', 'Francês') --2
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Patrick', 'Radden Keefe', 'Estadunidense') --3
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Joe', 'Navarro', 'Cubano') --4
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Toni', 'Sciarra Poynter', 'Estadunidense') --5
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Valeska', 'Zanello', 'Brasileiro') --6
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Arthur', 'Schopenhauer', 'Alemão') --7
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Nicolau', 'Maquiavel', 'Italiano') --8
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Robert', 'Kiyosaki', 'Estadunidense') --9
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Anne', 'Galante', 'Brasileiro') --10
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Peter', 'Attia', 'Canadense') --11
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Bill', 'Gifford', 'Estadunidense') --12
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('William', 'Davis', 'Estadunidense') --13
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Jacques', 'Lacan', 'Francês') --14
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Ednei', 'Fernando dos Santos', 'Brasileiro') --15
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Fiódor', 'Dostoiévski', 'Russo') --16
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Sarah', 'J. Maas', 'Estadunidense') --17
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Clive', 'Staples Lewis', 'Britânico') --18
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Álvares', 'de Azevedo', 'Brasileiro') --19
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Eiichiro', 'Oda', 'Japonês') --20
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Ruth', 'Stiles Gannett', 'Brasileiro') --21
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Equipe', 'Melhoramentos', 'Brasileiro') --22
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Haemin', 'Sunim', 'Coreano') --23
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('David', 'Goggins', 'Estadunidense') --24
+    INTO Autor (Pnome, Snome, Nacionalidade) VALUES ('Arthur', 'Conan Doyle', 'Britânico') --25
+SELECT * FROM DUAL;
+
+SELECT * FROM Autor;
