@@ -127,3 +127,30 @@ CREATE TABLE Escrito (
  	CONSTRAINT fk_Livro FOREIGN KEY (ISBN_Livro) 
 		REFERENCES Livro(ISBN) ON DELETE CASCADE
 ); 
+
+-- Create Possui
+CREATE TABLE Possui ( 
+	Num_Nota_Fiscal_Compra NUMBER(16,0) NOT NULL,
+	ISBN_Livro NUMBER(13,0) NOT NULL,
+ 	Quantidade INT NOT NULL,
+	Preco NUMBER(10,2) NOT NULL,
+ 	
+ 	CONSTRAINT pk_Possui PRIMARY KEY(ISBN_Livro, Num_Nota_Fiscal_Compra), 
+ 	CONSTRAINT fk_Possui_Livro FOREIGN KEY (ISBN_Livro) 
+	 	REFERENCES Livro(ISBN) ON DELETE CASCADE,
+ 	CONSTRAINT fk_Compra FOREIGN KEY (Num_Nota_Fiscal_Compra) 
+	 	REFERENCES Compra(Num_Nota_Fiscal) ON DELETE CASCADE,
+	CONSTRAINT chk_quantidade CHECK (Quantidade > 0),
+	CONSTRAINT chk_preco CHECK (Preco >= 0)
+);
+
+CREATE TABLE Pertence (
+	ISBN_Livro NUMBER(13,0) NOT NULL,  
+ 	ID_Genero INT NOT NULL,
+	 
+	CONSTRAINT pk_Pertence PRIMARY KEY(ISBN_Livro, ID_Genero),
+	CONSTRAINT fk_Livro_no_pertence FOREIGN KEY (ISBN_Livro) 
+		REFERENCES Livro(ISBN) ON DELETE CASCADE,
+ 	CONSTRAINT fk_Genero FOREIGN KEY (ID_Genero) 
+		REFERENCES Genero(ID) ON DELETE CASCADE
+);

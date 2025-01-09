@@ -171,3 +171,56 @@ INSERT ALL
 SELECT * FROM DUAL;
 
 SELECT * FROM Escrito;
+
+-- Inserindo dados da tabela Pertence
+INSERT ALL 
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9788532649966', 30) -- 1
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786586551525', 30) -- 2
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786555603873', 30) -- 3
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786555603873', 29) -- 4
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786555983012', 30) -- 5
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786555983012', 29) -- 6
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786525033723', 28) -- 7
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786525033723', 21) -- 8
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786525033723', 20) -- 9
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9788562409028', 27) -- 10
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9788562409028', 3) -- 11
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786584956193', 26) -- 12
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786584956193', 10) -- 13
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786584956193', 2) -- 14
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9788550801483', 1) -- 15
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786588280799', 25) -- 16
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786555606157', 24) -- 17
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786555606157', 21) -- 18
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786555644562', 23) -- 19
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786559791729', 22) -- 20
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9788563960085', 19) -- 21
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786550970284', 18) -- 22
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786550970284', 11) -- 23
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786550970284', 12) -- 24
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9788501110121', 18) -- 25
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9788501110121', 17) -- 26
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9788501110121', 7) -- 27
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786556893204', 17) -- 28
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786556893204', 16) -- 29
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786556893204', 7) -- 30
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786556893204', 6) -- 31
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9788594318947', 15) -- 32
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9788594318947', 11) -- 33
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786525918914', 8) -- 34
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786585310352', 9) -- 35
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786555396881', 5) -- 36
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9788543105291', 14) -- 37
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9788543105291', 13) -- 38
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786555646139', 4) -- 39
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9786555646139', 13) -- 40
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9788594318725', 11) -- 41
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9788594318107', 12) -- 42
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9788594318107', 11) -- 43
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9788594318169', 12) -- 44
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9788594318169', 11) -- 45
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9788594318015', 18) -- 46
+    INTO Pertence (ISBN_Livro, ID_Genero) VALUES ('9788594318015', 11) -- 47
+SELECT * FROM DUAL;
+
+SELECT * FROM Pertence;
