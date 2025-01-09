@@ -224,3 +224,30 @@ INSERT ALL
 SELECT * FROM DUAL;
 
 SELECT * FROM Pertence;
+
+-- Dados relacionados a compras e clientes
+INSERT INTO Cliente(CPF, Sexo, Data_nascimento, Email, Pnome, Snome, Cidade, Estado)
+VALUES
+	('71583320989', 'm', '2002-01-04', 'carlosmendes@gmail.com', 'Carlos', 'Mendes', 'Curitiba', 'PR');
+-- Inserindo uma Compra
+INSERT INTO Compra(Num_Nota_Fiscal, CPF_Cliente, Total)
+VALUES
+	('1234567800012345', '71583320989', '99.20');
+
+-- Inserindo relação Possui
+INSERT ALL 
+    INTO Possui(Num_Nota_Fiscal_Compra, ISBN_Livro, Quantidade, Preco) VALUES('1234567800012345', '9788532649966', '1', '40.20')
+	INTO Possui(Num_Nota_Fiscal_Compra, ISBN_Livro, Quantidade, Preco) VALUES('1234567800012345', '9786586551525', '1', '59.00')
+    SELECT * FROM DUAL;
+    
+
+
+select * from compra;
+
+UPDATE Livro
+SET Estoque = Estoque - (SELECT Quantidade FROM Possui WHERE ISBN_Livro = '9788532649966' AND Num_Nota_Fiscal_Compra = '1234567800012345')
+WHERE ISBN = '9788532649966';
+
+UPDATE Livro
+SET Estoque = Estoque - (SELECT Quantidade FROM Possui WHERE ISBN_Livro = '9786586551525' AND Num_Nota_Fiscal_Compra = '1234567800012345')
+WHERE ISBN = '9786586551525';
