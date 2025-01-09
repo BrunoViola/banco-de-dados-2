@@ -74,3 +74,35 @@ INSERT ALL
 	INTO Editora(Nome) VALUES('Faro Editorial') --18
     SELECT * FROM DUAL;
 SELECT * FROM Editora;
+
+-- Inserindo Livros
+INSERT ALL
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9788532649966', 'Sociedade do cansaço', 2015, 40.2, 20, 1) --1
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9786586551525', 'A fábrica de cretinos digitais: Os perigos das telas para nossas crianças', 2021, 59.00, 13, 2) --2
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9786555603873', 'Império da dor: A ascensão e queda de uma das mais poderosas famílias americanas e seu criminoso império farmacêutico', 2023, 46.44, 15, 3) --3
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9786555983012', 'Personalidades Perigosas', 2023, 72.00, 2, 4) --4
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9786525033723', 'A Prateleira do Amor: Sobre Mulheres, Homens e Relações', 2022, 27.75, 1, 5) --5
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9788562409028', '38 estratégias para vencer qualquer debate', 2014, 15.00, 51, 18) --6
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9786584956193', 'O Príncipe - Edição de Luxo', 2023, 19.90, 29, 16) --7
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9788550801483', 'Pai Rico, pai Pobre: Edição de 20 Anos Atualizada e Ampliada', 2017, 46.67, 25, 6) --8
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9786588280799', 'Agulhas ativar: Crochetando roupas com Anne Galante', 2023, 92.25, 6, 7) --9
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9786555606157', 'Outlive: A arte e a ciência de viver mais e melhor', 2023, 50.90, 34, 3) --10
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9786555644562', 'Superintestino: Descubra como restaurar seu microbioma para fortalecer sua saúde, regular seu peso e melhorar seu humor', 2022, 44.43, 6, 8) --11
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9786559791729', 'O Seminário, livro 14: A lógica do fantasma', 2024, 149.90, 9, 9) --12
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9788563960085', 'Manual de Primeiros Socorros da Educação Física aos Esportes: o Papel do Educador Físico no Atendimento de Socorro', 2014, 56.23, 5, 10) --13
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9786550970284', 'Noites brancas', 2019, 12.94, 23, 11) --14
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9788501110121', 'Corte de asas e ruína (Vol. 3 Corte de espinhos e rosas)', 2017, 55.25, 27, 12) --15
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9786556893204', 'Trilogia Cósmica: Volume Único', 2022, 91.17, 11, 13) --16
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9788594318947', 'Noite na taverna', 2019, 13.09, 7, 11) --17
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9786525918914', 'One Piece Vol. 107', 2024, 30.00, 11, 14) --18
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9786585310352', 'O dragão do meu pai', 2024, 25.40, 2, 15) --19
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9786555396881', 'Michaelis Dicionário Escolar Língua Portuguesa', 2023, 40.08, 5, 16) --20
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9788543105291', 'As coisas que você só vê quando desacelera: Como manter a calma em um mundo frenético', 2017, 44.92, 13, 8) --21
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9786555646139', 'Nada pode me ferir', 2023, 47.42, 12, 8) --22
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9788594318725', 'O mundo perdido', 2019, 19.90, 48, 11) --23
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9788594318107', 'Sherlock Holmes - Um estudo em vermelho', 2019, 10.73, 49, 11) --24
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9788594318169', 'Sherlock Holmes - O signo dos quatro', 2019, 22.40, 47, 11) --25
+    INTO Livro (ISBN, Titulo, Ano, Preco, Estoque, ID_Editora) VALUES ('9788594318015', 'Sherlock Holmes - O cão dos Baskerville', 2019, 15.00, 40, 11) --26
+SELECT * FROM DUAL;
+
+SELECT * FROM Livro;
