@@ -137,3 +137,37 @@ INSERT ALL
 SELECT * FROM DUAL;
 
 SELECT * FROM Autor;
+
+-- Inserindo dados de Escrito
+INSERT ALL
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (1, '9788532649966') -- 1
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (2, '9786586551525') -- 2
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (3, '9786555603873') -- 3
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (4, '9786555983012') -- 4
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (5, '9786555983012') -- 5
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (6, '9786525033723') -- 6
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (7, '9788562409028') -- 7
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (8, '9786584956193') -- 8
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (9, '9788550801483') -- 9
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (10, '9786588280799') -- 10
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (11, '9786555606157') -- 11
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (12, '9786555606157') -- 12
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (13, '9786555644562') -- 13
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (14, '9786559791729') -- 14
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (15, '9788563960085') -- 15
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (16, '9786550970284') -- 16
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (17, '9788501110121') -- 17
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (18, '9786556893204') -- 18
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (19, '9788594318947') -- 19
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (20, '9786525918914') -- 20
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (21, '9786585310352') -- 21
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (22, '9786555396881') -- 22
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (23, '9788543105291') -- 23
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (24, '9786555646139') -- 24
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (25, '9788594318725') -- 25
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (25, '9788594318107') -- 26
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (25, '9788594318169') -- 27
+    INTO Escrito (ID_Autor, ISBN_Livro) VALUES (25, '9788594318015') -- 28
+SELECT * FROM DUAL;
+
+SELECT * FROM Escrito;

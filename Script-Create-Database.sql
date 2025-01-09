@@ -102,3 +102,28 @@ FOR EACH ROW
 BEGIN
 SELECT Autor_seq.nextval INTO :new.id FROM dual;
 END;
+
+-- Create Compra
+CREATE TABLE Compra (
+    Num_Nota_Fiscal NUMBER(19) NOT NULL,
+    Data_Compra DATE DEFAULT CURRENT_DATE,
+    Total NUMBER(10, 2),
+    CPF_Cliente CHAR(11) NOT NULL,
+
+    CONSTRAINT pk_Compra PRIMARY KEY (Num_Nota_Fiscal),
+    CONSTRAINT fk_Cliente FOREIGN KEY (CPF_Cliente)
+    REFERENCES Cliente(CPF),
+    CONSTRAINT chk_Total CHECK (Total > 0)
+);
+
+-- Create Escrito
+CREATE TABLE Escrito ( 
+ 	ID_Autor INT NOT NULL,  
+ 	ISBN_Livro NUMBER(13,0) NOT NULL,
+	 
+	CONSTRAINT pk_Escrito PRIMARY KEY(ID_Autor, ISBN_Livro),
+ 	CONSTRAINT fk_Autor FOREIGN KEY (ID_Autor) 
+		REFERENCES Autor(ID) ON DELETE CASCADE,
+ 	CONSTRAINT fk_Livro FOREIGN KEY (ISBN_Livro) 
+		REFERENCES Livro(ISBN) ON DELETE CASCADE
+); 
