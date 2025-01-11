@@ -227,3 +227,53 @@ BEGIN
     Carga_Autor(2); -- Fator de escala 2
 END;
 /
+
+--------------------------------------------------
+-- Tabela Compra
+--------------------------------------------------
+CREATE OR REPLACE PROCEDURE Carga_Compra(fator_escala IN NUMBER) AS
+    v_max_nota NUMBER(19,0); -- Variável para armazenar o maior número de nota fiscal existente
+    v_cpf_cliente CHAR(11); -- Variável para armazenar CPF de um cliente aleatório
+    v_total NUMERIC(10,2); -- Variável para armazenar o total da compra
+BEGIN
+    -- Obtém o maior número de nota fiscal já existente na tabela Compra
+    SELECT NVL(MAX(Num_Nota_Fiscal), 0) INTO v_max_nota FROM Compra;
+
+    -- Loop para gerar as compras
+    FOR i IN 1..(10 * fator_escala) LOOP
+        -- Seleciona um CPF aleatório da tabela Cliente
+        SELECT CPF INTO v_cpf_cliente
+        FROM Cliente
+        ORDER BY DBMS_RANDOM.VALUE
+        FETCH FIRST 1 ROWS ONLY;
+
+        -- Gera um valor aleatório para o total da compra
+        v_total := ROUND(DBMS_RANDOM.VALUE(10, 5000), 2); -- Valores entre 50 e 5000
+
+        -- Insere uma nova compra
+        INSERT INTO Compra (
+            Num_Nota_Fiscal,
+            Data_Compra,
+            Total,
+            CPF_Cliente
+        ) VALUES (
+            v_max_nota + i, -- Gera um número de nota fiscal único
+            CURRENT_DATE - DBMS_RANDOM.VALUE(0, 365), -- Data aleatória no último ano
+            v_total, -- Total gerado aleatoriamente
+            v_cpf_cliente -- CPF selecionado aleatoriamente
+        );
+    END LOOP;
+
+    -- Confirma as alterações
+    COMMIT;
+END;
+/
+
+BEGIN
+    Carga_Compra(1);
+    Carga_Compra(2);
+END;
+
+--------------------------------------------------
+-- Tabela Escrito
+--------------------------------------------------
