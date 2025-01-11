@@ -94,3 +94,51 @@ BEGIN
     Carga_Editora(2); -- Fator de escala 2
 END;
 /
+
+--------------------------------------------------
+-- Tabela Livro
+--------------------------------------------------
+CREATE OR REPLACE PROCEDURE Carga_Livro(fator_escala IN NUMBER) AS
+    v_max_isbn NUMBER(13,0); -- Variável para armazenar o maior ISBN existente
+    v_max_id_editora INT; -- Variável para armazenar o ID máximo da tabela Editora
+BEGIN
+    -- Obtém o maior ISBN já existente na tabela Livro
+    SELECT NVL(MAX(ISBN), 9780000000000) INTO v_max_isbn FROM Livro;
+
+    -- Obtém o maior ID da tabela Editora para garantir que a FK seja válida
+    SELECT MAX(ID) INTO v_max_id_editora FROM Editora;
+
+    IF v_max_id_editora IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20002, 'Não há registros na tabela Editora.');
+    END IF;
+
+    -- Gera dados para a tabela Livro
+    FOR i IN 1..(10 * fator_escala) LOOP
+        INSERT INTO Livro (
+            ISBN,
+            Titulo,
+            Ano,
+            Preco,
+            Estoque,
+            Descricao,
+            ID_Editora
+        ) VALUES (
+            v_max_isbn + i, -- Gera um novo ISBN a partir do maior existente
+            'Livro ' || (v_max_isbn + i), -- Título do livro
+            TRUNC(DBMS_RANDOM.VALUE(1900, 2023)), -- Ano aleatório entre 1900 e 2023
+            ROUND(DBMS_RANDOM.VALUE(10, 100), 2), -- Preço entre 10 e 500
+            TRUNC(DBMS_RANDOM.VALUE(1, 100)), -- Estoque entre 1 e 100
+            'Descrição do Livro ' || (v_max_isbn + i) || ' gerado automaticamente.', -- Descrição
+            TRUNC(DBMS_RANDOM.VALUE(1, v_max_id_editora + 1)) -- ID_Editora aleatório válido
+        );
+    END LOOP;
+
+    -- Confirma as alterações
+    COMMIT;
+END;
+/
+
+BEGIN
+    Carga_Livro(1);
+    Carga_Livro(2);
+END;
