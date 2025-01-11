@@ -277,3 +277,110 @@ END;
 --------------------------------------------------
 -- Tabela Escrito
 --------------------------------------------------
+CREATE OR REPLACE PROCEDURE Carga_Escrito(fator_escala IN NUMBER) AS
+    v_id_autor INT;         -- Variável para armazenar um ID de autor aleatório
+    v_isbn_livro NUMBER(13,0);    -- Variável para armazenar um ISBN de livro aleatório
+BEGIN
+    -- Loop para gerar registros na tabela Escrito
+    FOR i IN 1..(10 * fator_escala) LOOP
+        -- Seleciona um ID de autor aleatório
+        SELECT ID INTO v_id_autor
+        FROM Autor
+        ORDER BY DBMS_RANDOM.VALUE
+        FETCH FIRST 1 ROWS ONLY;
+
+        -- Seleciona um ISBN de livro aleatório
+        SELECT ISBN INTO v_isbn_livro
+        FROM Livro
+        ORDER BY DBMS_RANDOM.VALUE
+        FETCH FIRST 1 ROWS ONLY;
+
+        -- Tenta inserir o registro na tabela Escrito
+        BEGIN
+            INSERT INTO Escrito (
+                ID_Autor,
+                ISBN_Livro
+            ) VALUES (
+                v_id_autor,
+                v_isbn_livro
+            );
+        EXCEPTION
+            WHEN DUP_VAL_ON_INDEX THEN
+                -- Ignora conflitos de chave primária, permitindo continuar a execução
+                NULL;
+        END;
+    END LOOP;
+
+    -- Confirma as alterações
+    COMMIT;
+END;
+/
+
+
+BEGIN
+    Carga_Escrito(1);
+    Carga_Escrito(2);
+END;
+
+--------------------------------------------------
+-- Tabela Possui
+--------------------------------------------------
+CREATE OR REPLACE PROCEDURE Carga_Possui(fator_escala IN NUMBER) AS
+    v_num_nota_fiscal NUMBER(19,0); -- Armazena um número de nota fiscal aleatório
+    v_isbn_livro NUMBER(13,0);      -- Armazena um ISBN de livro aleatório
+    v_quantidade INT;         -- Quantidade de livros
+    v_preco NUMBER(10, 2);   -- Preço do livro
+BEGIN
+    -- Loop para gerar registros na tabela Possui
+    FOR i IN 1..(10 * fator_escala) LOOP
+        -- Seleciona uma nota fiscal aleatória
+        SELECT Num_Nota_Fiscal INTO v_num_nota_fiscal
+        FROM Compra
+        ORDER BY DBMS_RANDOM.VALUE
+        FETCH FIRST 1 ROWS ONLY;
+
+        -- Seleciona um ISBN de livro aleatório
+        SELECT ISBN INTO v_isbn_livro
+        FROM Livro
+        ORDER BY DBMS_RANDOM.VALUE
+        FETCH FIRST 1 ROWS ONLY;
+
+        -- Gera quantidade e preço aleatórios
+        v_quantidade := TRUNC(DBMS_RANDOM.VALUE(1, 11)); -- Quantidade de 1 a 10
+        SELECT Preco INTO v_preco
+        FROM Livro
+        WHERE ISBN = v_isbn_livro;
+
+        -- Tenta inserir o registro na tabela Possui
+        BEGIN
+            INSERT INTO Possui (
+                Num_Nota_Fiscal_Compra,
+                ISBN_Livro,
+                Quantidade,
+                Preco
+            ) VALUES (
+                v_num_nota_fiscal,
+                v_isbn_livro,
+                v_quantidade,
+                v_preco * v_quantidade -- Preço total
+            );
+        EXCEPTION
+            WHEN DUP_VAL_ON_INDEX THEN
+                -- Ignora conflitos de chave primária, permitindo continuar a execução
+                NULL;
+        END;
+    END LOOP;
+
+    -- Confirma as alterações
+    COMMIT;
+END;
+/
+
+BEGIN
+    Carga_Possui(1);
+    Carga_Possui(2);
+END;
+
+--------------------------------------------------
+-- Tabela Pertence
+--------------------------------------------------
