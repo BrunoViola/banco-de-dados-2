@@ -142,3 +142,88 @@ BEGIN
     Carga_Livro(1);
     Carga_Livro(2);
 END;
+
+--------------------------------------------------
+-- Tabela Cliente
+--------------------------------------------------
+CREATE OR REPLACE PROCEDURE Carga_Cliente(fator_escala IN NUMBER) AS
+    v_max_cpf NUMBER(11); -- Variável para armazenar o maior CPF existente
+BEGIN
+    -- Obtém o maior CPF já existente na tabela Cliente
+    SELECT NVL(MAX(TO_NUMBER(CPF)), 10000000000) INTO v_max_cpf FROM Cliente;
+
+    -- Gera dados para a tabela Cliente
+    FOR i IN 1..(10 * fator_escala) LOOP
+        INSERT INTO Cliente (
+            CPF,
+            Sexo,
+            Data_nascimento,
+            Email,
+            Pnome,
+            Snome,
+            Cidade,
+            Estado
+        ) VALUES (
+            TO_CHAR(v_max_cpf + i), -- Gera um novo CPF único
+            CASE MOD(i, 2) WHEN 0 THEN 'M' ELSE 'F' END, -- Alterna entre 'M' e 'F'
+            TO_DATE('1990-01-01', 'YYYY-MM-DD') + DBMS_RANDOM.VALUE(0, 10000), -- Data aleatória
+            'cliente' || (v_max_cpf + i) || '@email.com', -- Email único
+            'Nome' || (v_max_cpf + i), -- Nome único
+            'Sobrenome' || (v_max_cpf + i), -- Sobrenome único
+            'Cidade' || MOD(i, 10), -- Cidade semi-aleatória
+            CASE MOD(i, 4) WHEN 0 THEN 'SP' WHEN 1 THEN 'PR' WHEN 2 THEN 'MG' ELSE 'RJ' END -- Estado aleatório
+        );
+    END LOOP;
+
+    -- Confirma as alterações
+    COMMIT;
+END;
+/
+
+
+BEGIN
+    Carga_Cliente(1);
+    Carga_Cliente(2);
+END;
+
+--------------------------------------------------
+-- Tabela Autor
+--------------------------------------------------
+CREATE OR REPLACE PROCEDURE Carga_Autor(fator_escala IN NUMBER) AS
+    v_inicio NUMBER; -- Valor inicial do loop
+    v_fim NUMBER;    -- Valor final do loop
+    pnome varchar(30);
+    snome varchar(50);
+    nacionalidade varchar(20);
+    pnomes SYS.ODCIVARCHAR2LIST := SYS.ODCIVARCHAR2LIST('Márcia', 'Policarpo', 'Lima', 'Lívia', 'Bruna', 'Geovana', 'Arnold', 'Maurice', 'Artur'); -- Lista de nomes
+    snomes SYS.ODCIVARCHAR2LIST := SYS.ODCIVARCHAR2LIST('Doyle', 'Conan', 'Leblanc', 'Lupin', 'Holmes', 'Machado', 'Assis', 'Borba', 'Quaresma'); -- Lista de sobrenomes
+    nacionalidades SYS.ODCIVARCHAR2LIST := SYS.ODCIVARCHAR2LIST('Brasileiro', 'Canadense', 'Mexicano', 'Estadunidense', 'Venezuelano', 'Cubano', 'Argentino', 'Boliviano', 'Uruguaio'); -- Lista de nomes
+BEGIN
+    -- Calcula o início e o fim do intervalo para evitar duplicidade
+    SELECT NVL(MAX(ID), 0) + 1 INTO v_inicio FROM Autor;
+    v_fim := v_inicio + (10 * fator_escala) - 1;
+
+    -- Loop para inserir dados na tabela Secao
+    FOR i IN v_inicio..v_fim LOOP
+        pnome := pnomes(TRUNC(DBMS_RANDOM.VALUE(1, pnomes.COUNT + 1)));
+        snome := snomes(TRUNC(DBMS_RANDOM.VALUE(1, snomes.COUNT + 1)));
+        nacionalidade := nacionalidades(TRUNC(DBMS_RANDOM.VALUE(1, nacionalidades.COUNT + 1)));
+        INSERT INTO Autor (Pnome, Snome, Nacionalidade)
+        VALUES (
+            pnome,
+            snome,
+            nacionalidade
+        );
+    END LOOP;
+
+    -- Confirma as alterações
+    COMMIT;
+END;
+/
+
+
+BEGIN
+    Carga_Autor(1); -- Fator 1
+    Carga_Autor(2); -- Fator de escala 2
+END;
+/
