@@ -63,3 +63,34 @@ BEGIN
     Carga_Genero(1);
     Carga_Genero(2);
 END;
+
+--------------------------------------------------
+-- Tabela Editora
+--------------------------------------------------
+CREATE OR REPLACE PROCEDURE Carga_Editora(fator_escala IN NUMBER) AS
+    v_inicio NUMBER; -- Valor inicial do loop
+    v_fim NUMBER;    -- Valor final do loop
+BEGIN
+    -- Calcula o início e o fim do intervalo para evitar duplicidade
+    SELECT NVL(MAX(ID), 0) + 1 INTO v_inicio FROM Editora;
+    v_fim := v_inicio + (10 * fator_escala) - 1;
+
+    -- Loop para inserir dados na tabela Secao
+    FOR i IN v_inicio..v_fim LOOP
+        INSERT INTO Editora (Nome)
+        VALUES (
+            'Editora' || i -- Nome único gerado
+        );
+    END LOOP;
+
+    -- Confirma as alterações
+    COMMIT;
+END;
+/
+
+
+BEGIN
+    Carga_Editora(1); -- Fator 1
+    Carga_Editora(2); -- Fator de escala 2
+END;
+/
